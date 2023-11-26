@@ -1,7 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, useForm, usePage } from '@inertiajs/react';
 import { PageProps } from '@/types';
-import { Post } from '@/types/post';
+import { Post } from '@/types/Post';
 import { FormEventHandler } from 'react';
 import PostCard from '@/Components/PostCard';
 
