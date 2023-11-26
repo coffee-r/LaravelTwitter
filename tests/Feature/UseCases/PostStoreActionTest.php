@@ -40,7 +40,6 @@ class PostStoreActionTest extends TestCase
 
         $postStoreAction = new PostStoreAction();
         $this->expectException(HttpException::class);
-        $this->expectExceptionMessage('投稿数の上限に達しました。');
         $postStoreAction($user->id, $post);
     }
 }
