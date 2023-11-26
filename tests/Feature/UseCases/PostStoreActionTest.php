@@ -16,7 +16,7 @@ class PostStoreActionTest extends TestCase
     /**
      * @doesNotPerformAssertions
      */
-    public function test5つまで投稿()
+    public function testユーザーは5つまで投稿できる()
     {
         $user = User::factory()->create();
         Post::factory()->count(4)->create(['user_id' => $user->id]);
@@ -29,7 +29,7 @@ class PostStoreActionTest extends TestCase
         $postStoreAction($user->id, $post);
     }
 
-    public function test6つまで投稿はNG()
+    public function test6つ目の投稿は失敗する()
     {
         $user = User::factory()->create();
         Post::factory()->count(5)->create(['user_id' => $user->id]);
@@ -40,6 +40,7 @@ class PostStoreActionTest extends TestCase
 
         $postStoreAction = new PostStoreAction();
         $this->expectException(HttpException::class);
+        $this->expectExceptionMessage('投稿数の上限に達しました。');
         $postStoreAction($user->id, $post);
     }
 }
